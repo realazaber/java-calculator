@@ -1,19 +1,15 @@
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import java.awt.GridLayout;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JTextField;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class calculator {
 
 	private JFrame frame;
 	private JTextField textField;
+	
+	 String calculation = "";
 
 	/**
 	 * Launch the application.
@@ -42,6 +38,10 @@ public class calculator {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
+		
+		
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -52,34 +52,48 @@ public class calculator {
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		frame.getContentPane().setLayout(gridBagLayout);
 		
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.fill = GridBagConstraints.BOTH;
-		gbc.insets = new Insets(0, 0, 5, 5);
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		JLabel label_1 = new JLabel("Output: ");
-		frame.getContentPane().add(label_1, gbc);
-		
 		textField = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 2;
 		gbc_textField.anchor = GridBagConstraints.EAST;
 		gbc_textField.fill = GridBagConstraints.VERTICAL;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.gridx = 1;
+		gbc_textField.gridx = 0;
 		gbc_textField.gridy = 0;
 		frame.getContentPane().add(textField, gbc_textField);
 		textField.setColumns(20);
 		
+		JButton btn_1 = new JButton("1");
+		btn_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				calculation = calculation + " 1";
+				textField.setText(calculation);
+			}
+		});
+		
+		
+		
 		JButton btn_calculate = new JButton("Calculate");
 		GridBagConstraints gbc_btn_calculate = new GridBagConstraints();
 		gbc_btn_calculate.fill = GridBagConstraints.BOTH;
-		gbc_btn_calculate.insets = new Insets(0, 0, 5, 0);
-		gbc_btn_calculate.gridx = 3;
+		gbc_btn_calculate.insets = new Insets(0, 0, 5, 5);
+		gbc_btn_calculate.gridx = 2;
 		gbc_btn_calculate.gridy = 0;
 		frame.getContentPane().add(btn_calculate, gbc_btn_calculate);
 		
-		JButton btn_1 = new JButton("1");
+		JButton btnClear = new JButton("Clear");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText("");
+			}
+		});
+		GridBagConstraints gbc_btnClear = new GridBagConstraints();
+		gbc_btnClear.insets = new Insets(0, 0, 5, 5);
+		gbc_btnClear.gridx = 3;
+		gbc_btnClear.gridy = 0;
+		frame.getContentPane().add(btnClear, gbc_btnClear);
+		
+		
 		GridBagConstraints gbc_btn_1 = new GridBagConstraints();
 		gbc_btn_1.fill = GridBagConstraints.BOTH;
 		gbc_btn_1.insets = new Insets(0, 0, 5, 5);
@@ -138,7 +152,7 @@ public class calculator {
 		JButton btnSubtract = new JButton("_");
 		GridBagConstraints gbc_btnSubtract = new GridBagConstraints();
 		gbc_btnSubtract.fill = GridBagConstraints.BOTH;
-		gbc_btnSubtract.insets = new Insets(0, 0, 5, 5);
+		gbc_btnSubtract.insets = new Insets(0, 0, 5, 0);
 		gbc_btnSubtract.gridx = 3;
 		gbc_btnSubtract.gridy = 2;
 		frame.getContentPane().add(btnSubtract, gbc_btnSubtract);
@@ -170,7 +184,7 @@ public class calculator {
 		JButton btnMultiply = new JButton("X");
 		GridBagConstraints gbc_btnMultiply = new GridBagConstraints();
 		gbc_btnMultiply.fill = GridBagConstraints.BOTH;
-		gbc_btnMultiply.insets = new Insets(0, 0, 5, 5);
+		gbc_btnMultiply.insets = new Insets(0, 0, 5, 0);
 		gbc_btnMultiply.gridx = 3;
 		gbc_btnMultiply.gridy = 3;
 		frame.getContentPane().add(btnMultiply, gbc_btnMultiply);
@@ -187,9 +201,10 @@ public class calculator {
 		JButton btnDivide = new JButton("/");
 		GridBagConstraints gbc_btnDivide = new GridBagConstraints();
 		gbc_btnDivide.fill = GridBagConstraints.BOTH;
-		gbc_btnDivide.insets = new Insets(0, 0, 5, 5);
 		gbc_btnDivide.gridx = 3;
 		gbc_btnDivide.gridy = 4;
 		frame.getContentPane().add(btnDivide, gbc_btnDivide);
+		
+		
 	}
 }
