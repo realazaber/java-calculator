@@ -97,15 +97,20 @@ public class calculator {
 				
 				String tmpString = "";
 				Double tmpDouble = 0.0;
-				for (var element : calculation) {
-					switch (element) {
+
+				for (int i = 0; i < calculation.size(); i++) {
+					switch (calculation.get(i)) {
 					case " + ": 
 					case"+": {
 						//add
 						tmpString = convertToString(outputList);
 						tmpDouble = Double.parseDouble(tmpString);
 						System.out.println("ADDITION");
-						result += tmpDouble;
+						double prevNum = Double.valueOf(calculation.get(i - 1));
+						double nextNum = Double.valueOf(calculation.get(i + 1));
+						System.out.println("Prev num: " + prevNum);
+						System.out.println("Next num: " + nextNum);
+						result = prevNum + nextNum;
 						System.out.println("Result: " + result);
 						break;
 					}
@@ -115,7 +120,11 @@ public class calculator {
 						tmpString = convertToString(outputList);
 						tmpDouble = Double.parseDouble(tmpString);
 						System.out.println("SUBRACTION");
-						result -= tmpDouble;
+						double prevNum = Double.valueOf(calculation.get(i - 1));
+						double nextNum = Double.valueOf(calculation.get(i + 1));
+						System.out.println("Prev num: " + prevNum);
+						System.out.println("Next num: " + nextNum);
+						result = prevNum - nextNum;
 						System.out.println("Result: " + result);
 						break;
 					}
@@ -125,7 +134,11 @@ public class calculator {
 						tmpString = convertToString(outputList);
 						tmpDouble = Double.parseDouble(tmpString);
 						System.out.println("MULTIPLICATION");
-						result *= tmpDouble;						
+						double prevNum = Double.valueOf(calculation.get(i - 1));
+						double nextNum = Double.valueOf(calculation.get(i + 1));
+						System.out.println("Prev num: " + prevNum);
+						System.out.println("Next num: " + nextNum);
+						result = prevNum * nextNum;		
 						System.out.println("Result: " + result);
 						break;
 					}
@@ -135,18 +148,23 @@ public class calculator {
 						tmpString = convertToString(outputList);
 						tmpDouble = Double.parseDouble(tmpString);
 						System.out.println("DIVISION");
-						result /= tmpDouble;
+						double prevNum = Double.valueOf(calculation.get(i - 1));
+						double nextNum = Double.valueOf(calculation.get(i + 1));
+						System.out.println("Prev num: " + prevNum);
+						System.out.println("Next num: " + nextNum);
+						result = prevNum / nextNum;
 						System.out.println("Result: " + result);
 						break;
 					}
 					default: {
 						//add number to the result
-						outputList.add(element);
+						outputList.add(calculation.get(i));
 						
 					}
 					
 					}
 				}
+				
 				System.out.println("tmpString " + tmpString);
 				System.out.println("tmpDouble " + tmpDouble);
 				calculation.clear();
