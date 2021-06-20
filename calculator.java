@@ -66,7 +66,7 @@ public class calculator {
 		JButton btn_1 = new JButton("1");
 		btn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculation = calculation + " 1";
+				calculation += "1";
 				textField.setText(calculation);
 			}
 		});
@@ -81,17 +81,19 @@ public class calculator {
 		gbc_btn_calculate.gridy = 0;
 		frame.getContentPane().add(btn_calculate, gbc_btn_calculate);
 		
-		JButton btnClear = new JButton("Clear");
-		btnClear.addActionListener(new ActionListener() {
+		JButton btnDelete = new JButton("Backspace");
+		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textField.setText("");
+				calculation = calculation.substring(0, calculation.length()-1);
+				textField.setText(calculation);
 			}
 		});
-		GridBagConstraints gbc_btnClear = new GridBagConstraints();
-		gbc_btnClear.insets = new Insets(0, 0, 5, 5);
-		gbc_btnClear.gridx = 3;
-		gbc_btnClear.gridy = 0;
-		frame.getContentPane().add(btnClear, gbc_btnClear);
+		GridBagConstraints gbc_btnDelete = new GridBagConstraints();
+		gbc_btnDelete.fill = GridBagConstraints.BOTH;
+		gbc_btnDelete.insets = new Insets(0, 0, 5, 0);
+		gbc_btnDelete.gridx = 3;
+		gbc_btnDelete.gridy = 0;
+		frame.getContentPane().add(btnDelete, gbc_btnDelete);
 		
 		
 		GridBagConstraints gbc_btn_1 = new GridBagConstraints();
@@ -102,6 +104,12 @@ public class calculator {
 		frame.getContentPane().add(btn_1, gbc_btn_1);
 		
 		JButton btn_2 = new JButton("2");
+		btn_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				calculation += "2";
+				textField.setText(calculation);
+			}
+		});
 		GridBagConstraints gbc_btn_2 = new GridBagConstraints();
 		gbc_btn_2.fill = GridBagConstraints.BOTH;
 		gbc_btn_2.insets = new Insets(0, 0, 5, 5);
@@ -110,6 +118,12 @@ public class calculator {
 		frame.getContentPane().add(btn_2, gbc_btn_2);
 		
 		JButton btn_3 = new JButton("3");
+		btn_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				calculation += "3";
+				textField.setText(calculation);
+			}
+		});
 		GridBagConstraints gbc_btn_3 = new GridBagConstraints();
 		gbc_btn_3.fill = GridBagConstraints.BOTH;
 		gbc_btn_3.insets = new Insets(0, 0, 5, 5);
@@ -197,6 +211,19 @@ public class calculator {
 		gbc_btn_0.gridx = 0;
 		gbc_btn_0.gridy = 4;
 		frame.getContentPane().add(btn_0, gbc_btn_0);
+		
+		JButton btnClear = new JButton("Clear");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText("");
+			}
+		});
+		GridBagConstraints gbc_btnClear = new GridBagConstraints();
+		gbc_btnClear.fill = GridBagConstraints.BOTH;
+		gbc_btnClear.insets = new Insets(0, 0, 0, 5);
+		gbc_btnClear.gridx = 2;
+		gbc_btnClear.gridy = 4;
+		frame.getContentPane().add(btnClear, gbc_btnClear);
 		
 		JButton btnDivide = new JButton("/");
 		GridBagConstraints gbc_btnDivide = new GridBagConstraints();
