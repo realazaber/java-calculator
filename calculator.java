@@ -12,6 +12,8 @@ public class calculator {
 
 	private JFrame frame;
 	private JTextField textField;
+	public double result = 0.0;
+	public String output = "";
 	
 	ArrayList<String> calculation = new ArrayList<String>();
 	
@@ -86,30 +88,49 @@ public class calculator {
 		
 		
 		JButton btn_calculate = new JButton("Calculate");
-		double result = 0.0;
-		String output = "";
+
+
+
 		ArrayList<String> outputList = new ArrayList<String>();
 		btn_calculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-
+				String tmpString = "";
+				Double tmpDouble = 0.0;
 				for (var element : calculation) {
 					switch (element) {
-					case " + ": {
+					case " + ", "+": {
 						//add
+						tmpString = convertToString(outputList);
+						tmpDouble = Double.parseDouble(tmpString);
+						System.out.println("ADDITION");
+						result += tmpDouble;
+						break;
+					}
+					case " - ", "-": {
+						//subtract
+						tmpString = convertToString(outputList);
+						tmpDouble = Double.parseDouble(tmpString);
+						System.out.println("SUBRACTION");
+						result -= tmpDouble;
+						break;
+					}
+					case " * ", "*": {
+						//multiply
+						tmpString = convertToString(outputList);
+						tmpDouble = Double.parseDouble(tmpString);
+						System.out.println("MULTIPLICATION");
+						result *= tmpDouble;						
 						
 						break;
 					}
-					case " - ": {
-						//subtract
-						break;
-					}
-					case " * ": {
-						//multiply
-						break;
-					}
-					case " / ": {
+					case " / ", "/": {
 						//divide
+						tmpString = convertToString(outputList);
+						tmpDouble = Double.parseDouble(tmpString);
+						System.out.println("DIVISION");
+						result /= tmpDouble;
+						
 						break;
 					}
 					default: {
@@ -117,8 +138,14 @@ public class calculator {
 						outputList.add(element);
 						
 					}
+					
 					}
 				}
+				System.out.println(tmpString);
+				System.out.println(tmpDouble);
+				calculation.clear();
+				output = Double.toString(result);
+				textField.setText(output);
 			
 			}
 			
@@ -199,7 +226,7 @@ public class calculator {
 		btn_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add("4");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btn_4 = new GridBagConstraints();
@@ -326,7 +353,9 @@ public class calculator {
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.clear();
-				textField.setText(convertToString(calculation));
+				result = 0.0;
+				output = "";
+				textField.setText("");
 			}
 		});
 		GridBagConstraints gbc_btnClear = new GridBagConstraints();
