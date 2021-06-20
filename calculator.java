@@ -80,7 +80,7 @@ public class calculator {
 		JButton btn_1 = new JButton("1");
 		btn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculation.add("1");
+				calculation.add("1.0");
 				textField.setText(convertToString(calculation));
 			}
 		});
@@ -106,6 +106,7 @@ public class calculator {
 						tmpDouble = Double.parseDouble(tmpString);
 						System.out.println("ADDITION");
 						result += tmpDouble;
+						System.out.println("Result: " + result);
 						break;
 					}
 					case " - ": 
@@ -115,6 +116,7 @@ public class calculator {
 						tmpDouble = Double.parseDouble(tmpString);
 						System.out.println("SUBRACTION");
 						result -= tmpDouble;
+						System.out.println("Result: " + result);
 						break;
 					}
 					case " * ":
@@ -124,7 +126,7 @@ public class calculator {
 						tmpDouble = Double.parseDouble(tmpString);
 						System.out.println("MULTIPLICATION");
 						result *= tmpDouble;						
-						
+						System.out.println("Result: " + result);
 						break;
 					}
 					case " / ": 
@@ -134,7 +136,7 @@ public class calculator {
 						tmpDouble = Double.parseDouble(tmpString);
 						System.out.println("DIVISION");
 						result /= tmpDouble;
-						
+						System.out.println("Result: " + result);
 						break;
 					}
 					default: {
@@ -187,7 +189,7 @@ public class calculator {
 		JButton btn_2 = new JButton("2");
 		btn_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculation.add("2");
+				calculation.add("2.0");
 				textField.setText(convertToString(calculation));
 			}
 		});
@@ -201,7 +203,7 @@ public class calculator {
 		JButton btn_3 = new JButton("3");
 		btn_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculation.add("3");
+				calculation.add("3.0");
 				textField.setText(convertToString(calculation));
 			}
 		});
@@ -229,7 +231,7 @@ public class calculator {
 		JButton btn_4 = new JButton("4");
 		btn_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculation.add("4");
+				calculation.add("4.0");
 				textField.setText(convertToString(calculation));
 			}
 		});
@@ -243,7 +245,7 @@ public class calculator {
 		JButton btn_5 = new JButton("5");
 		btn_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculation.add("5");
+				calculation.add("5.0");
 				textField.setText(convertToString(calculation));
 			}
 		});
@@ -257,7 +259,7 @@ public class calculator {
 		JButton btn_6 = new JButton("6");
 		btn_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculation.add("6");
+				calculation.add("6.0");
 				textField.setText(convertToString(calculation));
 			}
 		});
@@ -285,7 +287,7 @@ public class calculator {
 		JButton btn_7 = new JButton("7");
 		btn_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculation.add("7");
+				calculation.add("7.0");
 				textField.setText(convertToString(calculation));
 			}
 		});
@@ -299,7 +301,7 @@ public class calculator {
 		JButton btn_8 = new JButton("8");
 		btn_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculation.add("8");
+				calculation.add("8.0");
 				textField.setText(convertToString(calculation));
 			}
 		});
@@ -313,7 +315,7 @@ public class calculator {
 		JButton btn_9 = new JButton("9");
 		btn_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculation.add("9");
+				calculation.add("9.0");
 				textField.setText(convertToString(calculation));
 			}
 		});
@@ -342,7 +344,7 @@ public class calculator {
 		JButton btn_0 = new JButton("0");
 		btn_0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				calculation.add("0");
+				calculation.add("0.0");
 				textField.setText(convertToString(calculation));
 			}
 		});
