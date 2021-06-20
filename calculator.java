@@ -1,5 +1,8 @@
 
 import javax.swing.*;
+
+import com.sun.net.httpserver.Authenticator.Result;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -39,17 +42,17 @@ public class calculator {
 	 * Initialize the contents of the frame.
 	 */
 	
-	public String convertToString() {
+	//Convert arraylist to string so it can
+	//be shown in the text box.
+	public String convertToString(ArrayList<String> List) {
 		String text = "";
-		for (var element : calculation) {
+		for (var element : List) {
 			text += element;
 		}
 		return text;
 	}
+	
 	private void initialize() {
-		
-		
-		
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
@@ -76,19 +79,50 @@ public class calculator {
 		btn_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add("1");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		
 		
 		
 		JButton btn_calculate = new JButton("Calculate");
+		double result = 0.0;
+		String output = "";
+		ArrayList<String> outputList = new ArrayList<String>();
 		btn_calculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				double result = 0.0;
+
+				for (var element : calculation) {
+					switch (element) {
+					case " + ": {
+						//add
+						
+						break;
+					}
+					case " - ": {
+						//subtract
+						break;
+					}
+					case " * ": {
+						//multiply
+						break;
+					}
+					case " / ": {
+						//divide
+						break;
+					}
+					default: {
+						//add number to the result
+						outputList.add(element);
+						
+					}
+					}
+				}
 			
 			}
+			
+			
 		});
 		GridBagConstraints gbc_btn_calculate = new GridBagConstraints();
 		gbc_btn_calculate.fill = GridBagConstraints.BOTH;
@@ -101,7 +135,7 @@ public class calculator {
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.remove(calculation.size() - 1);
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btnDelete = new GridBagConstraints();
@@ -123,7 +157,7 @@ public class calculator {
 		btn_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add("2");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btn_2 = new GridBagConstraints();
@@ -137,7 +171,7 @@ public class calculator {
 		btn_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add("3");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btn_3 = new GridBagConstraints();
@@ -151,7 +185,7 @@ public class calculator {
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add(" + ");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btnAdd = new GridBagConstraints();
@@ -179,7 +213,7 @@ public class calculator {
 		btn_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add("5");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btn_5 = new GridBagConstraints();
@@ -193,7 +227,7 @@ public class calculator {
 		btn_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add("6");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btn_6 = new GridBagConstraints();
@@ -207,7 +241,7 @@ public class calculator {
 		btnSubtract.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add(" - ");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btnSubtract = new GridBagConstraints();
@@ -221,7 +255,7 @@ public class calculator {
 		btn_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add("7");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btn_7 = new GridBagConstraints();
@@ -235,7 +269,7 @@ public class calculator {
 		btn_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add("8");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btn_8 = new GridBagConstraints();
@@ -249,7 +283,7 @@ public class calculator {
 		btn_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add("9");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btn_9 = new GridBagConstraints();
@@ -263,7 +297,7 @@ public class calculator {
 		btnMultiply.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add(" * ");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btnMultiply = new GridBagConstraints();
@@ -278,7 +312,7 @@ public class calculator {
 		btn_0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add("0");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btn_0 = new GridBagConstraints();
@@ -292,7 +326,7 @@ public class calculator {
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.clear();
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btnClear = new GridBagConstraints();
@@ -306,7 +340,7 @@ public class calculator {
 		btnDivide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				calculation.add(" / ");
-				textField.setText(convertToString());
+				textField.setText(convertToString(calculation));
 			}
 		});
 		GridBagConstraints gbc_btnDivide = new GridBagConstraints();
