@@ -99,7 +99,8 @@ public class calculator {
 				Double tmpDouble = 0.0;
 				for (var element : calculation) {
 					switch (element) {
-					case " + ", "+": {
+					case " + ": 
+					case"+": {
 						//add
 						tmpString = convertToString(outputList);
 						tmpDouble = Double.parseDouble(tmpString);
@@ -107,7 +108,8 @@ public class calculator {
 						result += tmpDouble;
 						break;
 					}
-					case " - ", "-": {
+					case " - ": 
+					case "-": {
 						//subtract
 						tmpString = convertToString(outputList);
 						tmpDouble = Double.parseDouble(tmpString);
@@ -115,7 +117,8 @@ public class calculator {
 						result -= tmpDouble;
 						break;
 					}
-					case " * ", "*": {
+					case " * ":
+					case "*": {
 						//multiply
 						tmpString = convertToString(outputList);
 						tmpDouble = Double.parseDouble(tmpString);
@@ -124,7 +127,8 @@ public class calculator {
 						
 						break;
 					}
-					case " / ", "/": {
+					case " / ": 
+					case "/": {
 						//divide
 						tmpString = convertToString(outputList);
 						tmpDouble = Double.parseDouble(tmpString);
@@ -141,8 +145,8 @@ public class calculator {
 					
 					}
 				}
-				System.out.println(tmpString);
-				System.out.println(tmpDouble);
+				System.out.println("tmpString " + tmpString);
+				System.out.println("tmpDouble " + tmpDouble);
 				calculation.clear();
 				output = Double.toString(result);
 				textField.setText(output);
